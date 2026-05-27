@@ -274,31 +274,53 @@ html, body {
 ══════════════════════════════════════ */
 @media (max-width: 600px) {
   .carta-section {
-    padding: .6rem .6rem;
-    padding-top: max(.6rem, env(safe-area-inset-top));
-    padding-bottom: max(.6rem, env(safe-area-inset-bottom));
+    padding: .4rem .5rem;
+    padding-top: max(.4rem, env(safe-area-inset-top));
+    padding-bottom: max(.4rem, env(safe-area-inset-bottom));
+    align-items: flex-start;
   }
 
   .message-card {
     border-radius: 14px;
-    max-height: calc(100dvh - 1.2rem);
+    max-height: calc(100dvh - .8rem);
+    overflow-y: auto;          /* ← permite scroll dentro de la tarjeta */
     background: rgba(30, 5, 60, 0.78);
     backdrop-filter: none; -webkit-backdrop-filter: none;
     border-color: rgba(216,180,254,.2);
+    padding: 1rem 1.2rem 1.4rem;
+    gap: 0;
   }
 
-  .msg-body     { text-align: left; }
-  .msg-deco     { display: none; }
+  .msg-body {
+    text-align: left;
+    font-size: .8rem;
+    line-height: 1.6;
+  }
 
-  /* ── Música: sube arriba en móvil ── */
+  .msg-top-flower  { font-size: 1.4rem; margin-bottom: .3rem; }
+  .msg-to          { font-size: 1.1rem; }
+  .msg-from        { font-size: .78rem; }
+  .closing-text    { font-size: 1rem; }
+  .msg-divider     { margin: .4rem auto; }
+  .msg-closing-row { margin-top: .4rem; }
+  .closing-hearts-inline { font-size: 1rem; }
+
+  .back-btn {
+    margin-top: .8rem;
+    padding: .5rem 1.3rem;
+    font-size: .78rem;
+  }
+
+  .msg-deco { display: none; }
+
+  /* Música arriba para no tapar el botón Volver */
   .music-bar {
     top: max(.7rem, env(safe-area-inset-top));
     bottom: auto;
     right: .7rem;
-    left: auto;
   }
 }
 
 @media (max-width: 380px) {
-  .msg-body { line-height: 1.65; }
+  .msg-body { line-height: 1.55; font-size: .76rem; }
 }

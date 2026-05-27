@@ -290,9 +290,12 @@ html, body {
   .msg-body     { text-align: left; }
   .msg-deco     { display: none; }
 
+  /* ── Música: sube arriba en móvil ── */
   .music-bar {
-    bottom: max(.7rem, env(safe-area-inset-bottom));
+    top: max(.7rem, env(safe-area-inset-top));
+    bottom: auto;
     right: .7rem;
+    left: auto;
   }
 }
 

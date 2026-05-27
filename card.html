@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tarjeta · Día de la Madre 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/card.css">
+</head>
+<body>
+
+  <script>
+    window.CARD_CONFIG_DEFAULT = {
+      recipientName : "Mamita Claudia",
+      senderName    : "De tu hija Claudia que te ama mucho",
+      cardTitle     : "Feliz Día de la Madre",
+     primaryColor : "#d8b4fe",
+accentColor  : "#9333ea",
+textColor    : "#2e1065",
+bgColor      : "#f5f0ff",
+      message: "A la mejor mamá del mundo.No solo por ser una persona amable, tierna y llena de bondad.Sino también por tener un corazón enorme, compasivo y cariñoso.\n\n Sé que estas palabras no son suficientes para describir lo maravillosa que eres, pero nacen desde lo más profundo de mi corazón.\n\n Gracias por ser nuestra amiga, consejera y el apoyo incondicional de cada sueño e idea que tus hijas tienen.\n\nGracias por ser el sol que ilumina nuestros días y el abrazo que siempre nos da paz.\n\nTe queremos mucho, mamita",
+      coverQuote: "Para la mujer más especial de mi vida",
+      /* pon false para usar solo degradado de color */
+      showBgPhotos : false,
+      bgImages: [
+      ],
+      musicUrl     : "assets/Cancion.mp3",
+      musicAutoplay: true,
+      musicLoop    : true,
+      showParticles: true,
+      backUrl      : "index.html",
+    };
+  </script>
+
+  <!-- Overlay de entrada (fade-in al llegar) -->
+  <div class="page-transition" id="js-page-transition"></div>
+
+  <!-- Fondo slideshow -->
+  <div class="bg-slideshow" aria-hidden="true">
+    <div class="bg-slide active" id="bg-slide-0"></div>
+    <div class="bg-slide"        id="bg-slide-1"></div>
+    <div class="bg-slide"        id="bg-slide-2"></div>
+    <div class="bg-slide"        id="bg-slide-3"></div>
+  </div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <!-- Partículas -->
+  <canvas id="card-particles" aria-hidden="true"></canvas>
+
+  <!-- Música -->
+  <audio id="card-music" loop></audio>
+  <div class="music-bar" id="js-music-bar" aria-label="Control de música">
+    <button class="music-btn" id="js-music-toggle" title="Play / Pause">
+      <span id="js-music-icon">▶</span>
+    </button>
+    <div class="music-wave" id="js-music-wave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- ══ CARTA — centrada, sin scroll ══ -->
+  <section class="carta-section visible" id="js-carta">
+    <div class="msg-deco left"  aria-hidden="true">✦</div>
+    <div class="msg-deco right" aria-hidden="true">✦</div>
+
+    <article class="message-card" id="js-message-card">
+      <div class="msg-top-flower" aria-hidden="true">🌸</div>
+      <h2 class="msg-to" id="js-msg-to"></h2>
+      <div class="msg-divider"></div>
+      <p class="msg-body" id="js-msg-body"></p>
+      <div class="msg-divider"></div>
+      <p class="msg-from" id="js-msg-from"></p>
+      <div class="msg-closing-row" aria-hidden="true">
+        <span class="closing-hearts-inline" id="js-hearts"></span>
+      </div>
+      <h3 class="closing-text" id="js-closing"></h3>
+      <a class="back-btn" id="js-back" href="#">← Volver</a>
+    </article>
+  </section>
+
+  <script src="js/card.js"></script>
+</body>
+</html>

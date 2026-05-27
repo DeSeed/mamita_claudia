@@ -1,0 +1,268 @@
+/* ── Welcome Screen CSS ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #d8b4fe;
+  --accent:  #9333ea;
+  --text:    #2e1065;
+  --white:   #faf5ff;
+  --shadow:  rgba(147, 51, 234, 0.28);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0e0520;
+  color: var(--text);
+}
+
+/* ── Imagen de fondo ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: var(--bg-image, none);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.45) saturate(.8);
+  z-index: 0;
+}
+
+/* ══════════════════════════════════════
+   TRANSICIÓN DE PÁGINA
+══════════════════════════════════════ */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0e0520;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .7s ease;
+}
+.page-transition.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Canvas de partículas ── */
+#particles-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Wrapper central ── */
+.welcome-wrapper {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  width: 92%;
+  animation: fadeUp .9s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* ══════════════════════════════════════
+   CORAZÓN DECORATIVO (reemplaza el círculo)
+══════════════════════════════════════ */
+.heart-deco {
+  position: absolute;
+  inset: -60px;
+  pointer-events: none;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heart-deco svg {
+  width: 260px;
+  height: 260px;
+  opacity: .13;
+  animation: heartbeat-slow 4s ease-in-out infinite;
+}
+
+/* ── Petal ring ── */
+.petal-ring {
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  z-index: -1;
+}
+.petal-ring span {
+  position: absolute;
+  width: 22px; height: 38px;
+  background: rgba(255,255,255,.22);
+  border-radius: 50% 50% 50% 0;
+  top: 50%; left: 50%;
+  transform-origin: 0 0;
+}
+.petal-ring span:nth-child(1) { transform: rotate(0deg)   translate(90px,-11px); }
+.petal-ring span:nth-child(2) { transform: rotate(45deg)  translate(90px,-11px); }
+.petal-ring span:nth-child(3) { transform: rotate(90deg)  translate(90px,-11px); }
+.petal-ring span:nth-child(4) { transform: rotate(135deg) translate(90px,-11px); }
+.petal-ring span:nth-child(5) { transform: rotate(180deg) translate(90px,-11px); }
+.petal-ring span:nth-child(6) { transform: rotate(225deg) translate(90px,-11px); }
+.petal-ring span:nth-child(7) { transform: rotate(270deg) translate(90px,-11px); }
+.petal-ring span:nth-child(8) { transform: rotate(315deg) translate(90px,-11px); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50px;
+  padding: .3rem 1rem;
+  margin-bottom: 1.4rem;
+  animation: fadeUp .9s .1s both;
+}
+
+/* ── Headline ── */
+.headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  text-shadow: 0 2px 24px var(--shadow);
+  animation: fadeUp .9s .18s both;
+}
+
+/* ── Subtitle ── */
+.subtitle {
+  margin-top: .9rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.82);
+  line-height: 1.6;
+  animation: fadeUp .9s .26s both;
+}
+
+/* ── Divisor blanco ── */
+.welcome-divider {
+  margin: 1.4rem auto;
+  width: 50px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  border-radius: 2px;
+  animation: fadeUp .9s .28s both;
+}
+
+/* ── Envelope ── */
+.envelope-scene {
+  margin: 1.6rem auto;
+  width: 110px; height: 76px;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 24px var(--shadow));
+  animation: fadeUp .9s .32s both, float 3.5s ease-in-out infinite 1s;
+}
+.env-body {
+  width: 110px; height: 76px;
+  background: rgba(255,255,255,.96);
+  border-radius: 4px 4px 8px 8px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.12),
+              inset 0 1px 0 rgba(255,255,255,.8);
+}
+.env-flap {
+  position: absolute;
+  top: -1px; left: 0;
+  width: 0; height: 0;
+  border-left: 55px solid transparent;
+  border-right: 55px solid transparent;
+  border-top: 40px solid #fff;
+  z-index: 2;
+}
+.env-heart {
+  font-size: 1.8rem;
+  color: var(--accent);
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+/* ── Enter Button ── */
+.enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 1rem;
+  padding: .9rem 2.2rem;
+  border: 2px solid rgba(255,255,255,.9);
+  border-radius: 50px;
+  background: #fff;
+  color: var(--accent);
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  box-shadow: 0 8px 32px var(--shadow),
+              0 0 0 4px rgba(255,255,255,.08);
+  transition: transform .2s, box-shadow .2s;
+  animation: fadeUp .9s .4s both;
+}
+.enter-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px var(--shadow), 0 0 0 6px rgba(255,255,255,.12);
+}
+.enter-btn:active { transform: scale(.97); }
+
+.btn-arrow {
+  width: 18px; height: 18px;
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Estrellas decorativas blancas ── */
+.star-row {
+  margin-top: 1.4rem;
+  color: rgba(255,255,255,.35);
+  font-size: .75rem;
+  letter-spacing: .6rem;
+  animation: fadeUp .9s .46s both;
+}
+
+/* ── Footer ── */
+.welcome-footer {
+  margin-top: .9rem;
+  font-size: .82rem;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .06em;
+  animation: fadeUp .9s .5s both;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.18); }
+}
+@keyframes heartbeat-slow {
+  0%,100% { transform: scale(1);    opacity: .13; }
+  50%      { transform: scale(1.06); opacity: .2;  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 380px) {
+  .headline { font-size: 2rem; }
+  .welcome-wrapper { padding: 1.5rem 1rem; }
+}
